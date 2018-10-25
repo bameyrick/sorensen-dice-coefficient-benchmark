@@ -1,11 +1,11 @@
 # Benchmarking Sørensen–Dice coefficient packages
 
 ## Results
-| Name                  | Ops sec |
-| --------------------- | ------- |
-| kor-string-similarity | 88858   |
-| dice-coefficient      | 81303   |
-| string-similarity-js  | 75125   |
-| natural               | 60714   |
-| dice-similarity-coeff | 34368   |
-| string-similarity     | 16616   |
+| Name                  | Operations per second |
+| --------------------- | --------------------- |
+| kor-string-similarity | 86836                 |
+| dice-coefficient      | 78719                 |
+| string-similarity-js  | 75620                 |
+| natural               | 61182                 |
+| dice-similarity-coeff | 32090                 |
+| string-similarity     | 17980                 |

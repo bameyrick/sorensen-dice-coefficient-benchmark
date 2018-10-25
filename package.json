@@ -15,6 +15,7 @@
 		"*.ts": [
 			"npm run lint",
 			"prettier --print-width 140 --use-tabs --single-quote --trailing-comma es5 --parser typescript --write",
+			"npm run benchmark",
 			"git add"
 		],
 		"*.json": ["prettier --print-width 140 --use-tabs --single-quote --trailing-comma es5 --parser json --write", "git add"]
