@@ -3,7 +3,7 @@ import { sortBy } from 'sort-by-typescript';
 import * as tablemark from 'tablemark';
 
 const Benchmark = require('benchmark');
-const suite = new Benchmark.Suite();
+const suite = new Benchmark.Suite('Sørensen–Dice coefficient');
 
 const libraries = {
 	'string-similarity': require('string-similarity').compareTwoStrings,
@@ -19,22 +19,25 @@ console.log('\r\n\r\nBenchmark Started\r\n');
 Object.keys(libraries).forEach(name => {
 	const fn = libraries[name].default || libraries[name];
 
-	suite.add(name, () => {
-		// from https://github.com/sindresorhus/leven/blob/master/bench.js
-		fn('a', 'b');
-		fn('ab', 'ac');
-		fn('ac', 'bc');
-		fn('abc', 'axc');
-		fn('kitten', 'sitting');
-		fn('xabxcdxxefxgx', '1ab2cd34ef5g6');
-		fn('cat', 'cow');
-		fn('xabxcdxxefxgx', 'abcdefg');
-		fn('javawasneat', 'scalaisgreat');
-		fn('example', 'samples');
-		fn('sturgeon', 'urgently');
-		fn('levenshtein', 'frankenstein');
-		fn('distance', 'difference');
-		fn('因為我是中國人所以我會說中文', '因為我是英國人所以我會說英文');
+	suite.add(name, {
+		minSamples: 200,
+		fn: () => {
+			// from https://github.com/sindresorhus/leven/blob/master/bench.js
+			fn('a', 'b');
+			fn('ab', 'ac');
+			fn('ac', 'bc');
+			fn('abc', 'axc');
+			fn('kitten', 'sitting');
+			fn('xabxcdxxefxgx', '1ab2cd34ef5g6');
+			fn('cat', 'cow');
+			fn('xabxcdxxefxgx', 'abcdefg');
+			fn('javawasneat', 'scalaisgreat');
+			fn('example', 'samples');
+			fn('sturgeon', 'urgently');
+			fn('levenshtein', 'frankenstein');
+			fn('distance', 'difference');
+			fn('因為我是中國人所以我會說中文', '因為我是英國人所以我會說英文');
+		},
 	});
 });
 

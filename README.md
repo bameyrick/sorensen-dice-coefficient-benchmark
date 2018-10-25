@@ -3,9 +3,9 @@
 ## Results
 | Name                  | Operations per second |
 | --------------------- | --------------------- |
-| kor-string-similarity | 86836                 |
-| dice-coefficient      | 78719                 |
-| string-similarity-js  | 75620                 |
-| natural               | 61182                 |
-| dice-similarity-coeff | 32090                 |
-| string-similarity     | 17980                 |
+| kor-string-similarity | 88210                 |
+| dice-coefficient      | 77996                 |
+| string-similarity-js  | 76514                 |
+| natural               | 63231                 |
+| dice-similarity-coeff | 33872                 |
+| string-similarity     | 17469                 |

@@ -8,14 +8,13 @@
 	"scripts": {
 		"lint": "tslint src/*.ts",
 		"benchmark": "rm -rf ./tmp && npm run lint && tsc -p ./ --outDir tmp/ && node tmp/benchmark.js && rm -rf ./tmp",
-		"lint-staged": "lint-staged",
+		"lint-staged": "lint-staged && npm run benchmark && git add README.md",
 		"precommit": "lint-staged"
 	},
 	"lint-staged": {
 		"*.ts": [
 			"npm run lint",
 			"prettier --print-width 140 --use-tabs --single-quote --trailing-comma es5 --parser typescript --write",
-			"npm run benchmark",
 			"git add"
 		],
 		"*.json": ["prettier --print-width 140 --use-tabs --single-quote --trailing-comma es5 --parser json --write", "git add"]
