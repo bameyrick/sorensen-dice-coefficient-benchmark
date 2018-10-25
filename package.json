@@ -1,0 +1,41 @@
+{
+	"name": "sorensen-dice-coefficient-benchmark",
+	"version": "1.0.0",
+	"description": "",
+	"main": "",
+	"author": "Ben Meyrick",
+	"license": "ISC",
+	"scripts": {
+		"lint": "tslint src/*.ts",
+		"benchmark": "rm -rf ./tmp && npm run lint && tsc -p ./ --outDir tmp/ && node tmp/benchmark.js && rm -rf ./tmp",
+		"lint-staged": "lint-staged"
+	},
+	"lint-staged": {
+		"*.ts": [
+			"npm run lint",
+			"prettier --print-width 140 --use-tabs --single-quote --trailing-comma es5 --parser typescript --write",
+			"git add"
+		],
+		"*.json": ["prettier --print-width 140 --use-tabs --single-quote --trailing-comma es5 --parser json --write", "git add"]
+	},
+	"devDependencies": {
+		"@types/benchmark": "^1.0.31",
+		"@types/node": "^10.12.0",
+		"benchmark": "^2.1.4",
+		"dice-coefficient": "^1.0.2",
+		"dice-similarity-coeff": "^1.0.4",
+		"husky": "^1.1.2",
+		"kor-string-similarity": "^1.0.2",
+		"lint-staged": "^7.3.0",
+		"microtime": "^2.1.8",
+		"natural": "^0.6.1",
+		"prettier": "^1.14.3",
+		"sort-by-typescript": "^1.0.2",
+		"string-similarity": "^2.0.0",
+		"string-similarity-js": "^2.1.1",
+		"tablemark": "^1.2.0",
+		"tslint": "^5.11.0",
+		"tslint-plugin-prettier": "^2.0.0",
+		"typescript": "^3.1.3"
+	}
+}
