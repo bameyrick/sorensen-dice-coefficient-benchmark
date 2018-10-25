@@ -8,8 +8,8 @@
 	"scripts": {
 		"lint": "tslint src/*.ts",
 		"benchmark": "rm -rf ./tmp && npm run lint && tsc -p ./ --outDir tmp/ && node tmp/benchmark.js && rm -rf ./tmp",
-		"lint-staged": "lint-staged && npm run benchmark && git add README.md",
-		"precommit": "lint-staged"
+		"lint-staged": "lint-staged",
+		"precommit": "lint-staged && npm run benchmark && git add README.md"
 	},
 	"lint-staged": {
 		"*.ts": [
