@@ -61,7 +61,9 @@ suite.on('complete', () => {
 			console.log(error);
 		} else {
 			const sortedResults = results.sort(sortBy('-ops/sec'));
-			const markdownTable = tablemark(sortedResults);
+			const markdownTable = tablemark(sortedResults, {
+				columns: ['Name', 'Operations per second'],
+			});
 			const newFileDat = data.replace('{table}', markdownTable.substr(0, markdownTable.length - 1));
 
 			fs.writeFile(`${process.cwd()}/README.md`, newFileDat, 'utf8', () => {});
