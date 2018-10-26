@@ -15,6 +15,7 @@ const libraries = {
 };
 
 const testPairs = [
+	['a', 'a'],
 	['a', 'b'],
 	['ab', 'ac'],
 	['ac', 'bc'],
