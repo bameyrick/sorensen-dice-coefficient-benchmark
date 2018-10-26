@@ -62,6 +62,7 @@ Object.keys(libraries).forEach(name => {
 interface IBenchmarkResult {
 	name: string;
 	'ops/sec': number;
+	passing?: string;
 }
 
 const results: IBenchmarkResult[] = [];
@@ -83,11 +84,9 @@ suite.on('complete', () => {
 		} else {
 			const sortedResults = results.sort(sortBy('-ops/sec'));
 			const sortedLibraries = sortedResults.map(result => result.name);
-			const markdownTable = tablemark(sortedResults, {
-				columns: ['Name', 'Operations per second'],
-			});
-
 			const sortedComparisonResults = comparisonResults.sort((a, b) => sortedLibraries.indexOf(a.name) - sortedLibraries.indexOf(b.name));
+
+			const mostCommonResults: number[] = [];
 
 			const testResults = testPairs.map((pair, index) => {
 				const pairResult = {
@@ -95,6 +94,7 @@ suite.on('complete', () => {
 				};
 
 				const mostCommonResult = mode(comparisonResults.map(result => result.results[index]));
+				mostCommonResults.push(mostCommonResult);
 
 				sortedComparisonResults.forEach(result => {
 					const score = result.results[index];
@@ -104,6 +104,17 @@ suite.on('complete', () => {
 				return pairResult;
 			});
 
+			sortedResults.forEach((result, index) => {
+				const testsPassed = sortedComparisonResults[index].results.map(
+					(sortedResult, resultIndex) => mostCommonResults[resultIndex] === sortedResult
+				);
+
+				result.passing = !testsPassed.includes(false) ? '✅' : '❌';
+			});
+
+			const markdownTable = tablemark(sortedResults, {
+				columns: ['Name', 'Operations per second', 'All results correct'],
+			});
 			const scoresTable = tablemark(testResults);
 
 			const newFileDat = data

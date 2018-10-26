@@ -2,14 +2,14 @@
 
 ## Results
 ### Benchmark
-| Name                  | Operations per second |
-| --------------------- | --------------------- |
-| kor-string-similarity | 89061                 |
-| dice-coefficient      | 81004                 |
-| string-similarity-js  | 75898                 |
-| natural               | 62875                 |
-| dice-similarity-coeff | 34151                 |
-| string-similarity     | 18273                 |
+| Name                  | Operations per second | All results correct |
+| --------------------- | --------------------- | ------------------- |
+| kor-string-similarity | 88989                 | ❌                   |
+| dice-coefficient      | 80349                 | ❌                   |
+| string-similarity-js  | 77332                 | ✅                   |
+| natural               | 63080                 | ✅                   |
+| dice-similarity-coeff | 34774                 | ❌                   |
+| string-similarity     | 18242                 | ✅                   |
 
 ### Comparison scores
 | Strings                             | Kor string similarity | Dice coefficient      | String similarity js  | Natural               | Dice similarity coeff | String similarity     |
