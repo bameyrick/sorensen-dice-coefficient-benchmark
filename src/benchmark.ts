@@ -82,9 +82,12 @@ suite.on('complete', () => {
 			console.log(error);
 		} else {
 			const sortedResults = results.sort(sortBy('-ops/sec'));
+			const sortedLibraries = sortedResults.map(result => result.name);
 			const markdownTable = tablemark(sortedResults, {
 				columns: ['Name', 'Operations per second'],
 			});
+
+			const sortedComparisonResults = comparisonResults.sort((a, b) => sortedLibraries.indexOf(a.name) - sortedLibraries.indexOf(b.name));
 
 			const testResults = testPairs.map((pair, index) => {
 				const pairResult = {
@@ -93,7 +96,7 @@ suite.on('complete', () => {
 
 				const mostCommonResult = mode(comparisonResults.map(result => result.results[index]));
 
-				comparisonResults.forEach(result => {
+				sortedComparisonResults.forEach(result => {
 					const score = result.results[index];
 					pairResult[result.name] = `${score} ${score === mostCommonResult ? '✅' : '❌'}`;
 				});
