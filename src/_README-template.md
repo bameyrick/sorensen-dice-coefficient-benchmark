@@ -1,4 +1,8 @@
-# Benchmarking Sørensen–Dice coefficient packages
+# Benchmarking and testing Sørensen–Dice coefficient packages
 
 ## Results
-{table}
+### Benchmark
+{benchmark_table}
+
+### Comparison scores
+{scores_table}
